@@ -1,23 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="روابط وموارد رسمية لاختبار IELTS لمساعدتك على التحضير بكفاءة.">
+  <title>موارد واختبارات IELTS</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+
+</head>
+<body>
+  <h1>مرحبا بكم في موارد IELTS</h1>
+  <p>اكتشف روابط رسمية ومواد تدريبية لاختبار IELTS لمساعدتك على التحضير بفعالية وتحقيق أفضل النتائج.</p>
+
+  <div class="links">
+    <a href="https://www.ielts.org/" target="_blank">
+      <i class="fas fa-globe"></i> الموقع الرسمي لاختبار IELTS
+    </a>
+    <a href="https://takeielts.britishcouncil.org/take-ielts/prepare" target="_blank">
+      <i class="fas fa-book-open"></i> مواد التدريب الرسمية
+    </a>
+    <a href="https://www.idp.com/ielts/" target="_blank">
+      <i class="fas fa-chalkboard-teacher"></i> معلومات عن IELTS من IDP
+    </a>
+    <a href="https://www.cambridgeenglish.org/exams-and-tests/ielts/" target="_blank">
+      <i class="fas fa-graduation-cap"></i> موارد كامبريدج IELTS
+    </a>
+  </div>
+
+  <footer>
+    &copy; 2026 موارد IELTS. جميع الحقوق محفوظة. |
+    <a href="#" id="privacy-link">سياسة الخصوصية</a> |
+    <a href="#" id="cookies-link">ملفات تعريف الارتباط</a> |
+    <a href="#" id="security-link">أمن المعلومات</a>
+  </footer>
+  
+  <!-- Privacy / Cookies Modal -->
+  <div id="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+       background: rgba(0,0,0,0.6); justify-content:center; align-items:center;">
+    <div style="background:#fff; padding:20px; border-radius:10px; max-width:500px; text-align:right; direction:rtl;">
+      <h2 id="modal-title"></h2>
+      <p id="modal-text"></p>
+      <button onclick="closeModal()" style="padding:10px 15px; background:#d70004; color:white; border:none; border-radius:5px; cursor:pointer;">إغلاق</button>
+    </div>
+  </div>
+  <div id="cookie-banner" style="position:fixed; bottom:0; width:100%; background:#d70004; color:white; padding:15px; text-align:center; display:flex; justify-content:center; gap:10px; z-index:1000;">
+    <span>يستخدم هذا الموقع ملفات تعريف الارتباط لتحسين تجربتك.</span>
+    <button onclick="acceptCookies()" style="padding:8px 15px; background:#e4cccd; color:rgb(255, 0, 0); border:none; border-radius:5px; cursor:pointer;">موافق</button>
+  </div>
+  
+  <script>
+    function acceptCookies() {
+      document.getElementById('cookie-banner').style.display = 'none';
+      localStorage.setItem('cookiesAccepted', 'true');
+    }
+  
+    window.onload = () => {
+      if(localStorage.getItem('cookiesAccepted') === 'true'){
+        document.getElementById('cookie-banner').style.display = 'none';
+      }
+    }
+  </script>
+  
+  <script>
+    const privacyText = "نحن نحترم خصوصيتك. جميع البيانات التي نجمعها تُستخدم فقط لتحسين تجربتك على الموقع، ولا نشاركها مع أي طرف ثالث بدون إذن.";
+    const cookiesText = "يستخدم هذا الموقع ملفات تعريف الارتباط لتحسين تجربتك وتخصيص المحتوى. من خلال الاستمرار في التصفح، فإنك توافق على استخدامنا للكوكيز.";
+    const securityText = "نحن نلتزم بتطبيق معايير الأمان الحديثة لحماية بيانات المستخدمين، بما في ذلك تشفير البيانات ومنع الوصول غير المصرح به.";
+  
+    document.getElementById('privacy-link').onclick = () => showModal("سياسة الخصوصية", privacyText);
+    document.getElementById('cookies-link').onclick = () => showModal("ملفات تعريف الارتباط", cookiesText);
+    document.getElementById('security-link').onclick = () => showModal("أمن المعلومات", securityText);
+  
+    function showModal(title, text){
+      document.getElementById('modal-title').innerText = title;
+      document.getElementById('modal-text').innerText = text;
+      document.getElementById('modal').style.display = "flex";
+    }
+  
+    function closeModal(){
+      document.getElementById('modal').style.display = "none";
+    }
+  </script>
+  
+</body>
 </html>
